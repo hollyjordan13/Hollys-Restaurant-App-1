@@ -159,11 +159,12 @@ createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
   const image = document.createElement('img');
+  image.alt = 'Photo Extract from ' + restaurant.name;
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   li.append(name);
 
@@ -176,7 +177,7 @@ createRestaurantHTML = (restaurant) => {
   li.append(address);
 
   const more = document.createElement('a');
-  more.innerHTML = 'View Details';
+  more.innerHTML = 'View Details of the restaurant ' + restaurant.name;
   more.href = DBHelper.urlForRestaurant(restaurant);
   more.tabIndex = '3';
   li.append(more)
@@ -196,7 +197,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
       window.location.href = marker.options.url;
     }
     self.markers.push(marker);
-    marker.tabIndex = '4';
+    marker.tabIndex = '-1';
   });
 
 } 
